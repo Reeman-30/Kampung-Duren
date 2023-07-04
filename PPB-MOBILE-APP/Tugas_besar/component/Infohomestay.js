@@ -1,28 +1,29 @@
 import React from 'react';
 import { View, Image, TouchableOpacity, StyleSheet, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import Detail  from '..//scrn/Detail';
 
 const Infohomestay = () => {
   const navigation = useNavigation();
 
   const handlePress = () => {
-    navigation.navigate('Tentang'); // Ganti dengan nama halaman tentang yang sesuai
+    navigation.navigate('Detail'); 
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.rowContainer}>
         <Image
-          source={require('../assets/vekalender.png')} // Ganti dengan path gambar yang sesuai
+          source={require('../assets/vekalender.png')} 
           resizeMode="contain" // Menggunakan resizeMode untuk menghindari pemotongan gambar
-          style={styles.smallImage} // Menggunakan style untuk gambar kecil
+          style={styles.smallImage} 
         />
         <Text style={styles.text}>Informasi</Text>
       </View>
       <TouchableOpacity onPress={handlePress}>
         <Image
-          source={require('../assets/motel.jpeg')} // Ganti dengan path gambar yang sesuai
-          style={styles.image} // Menggunakan style yang terpisah
+          source={require('../assets/motel.jpeg')} 
+          style={styles.image} 
         />
       </TouchableOpacity>
     </View>

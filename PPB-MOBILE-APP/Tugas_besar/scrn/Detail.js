@@ -1,7 +1,9 @@
 import React from 'react';
 import { View, StyleSheet, Image, ImageBackground, Text } from 'react-native';
+import { usenavigation } from '@react-navigation/native';
 
-const Home = () => {
+
+const Home = ({navigation}) => {
   return (
     <View style={styles.container}>
       <View style={[styles.flexItem, { flex: 5 }]}>

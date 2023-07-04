@@ -1,18 +1,24 @@
 import React from 'react';
 import { View, TouchableOpacity, Text, Image, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import Detail from '../scrn/Detail'
 
-const Chekin = ({ onPress }) => {
+const Checkin = () => {
+  const navigation = useNavigation();
+
+  const onPress = () => {
+    navigation.navigate('Detail'); // Ganti 'Detail' dengan nama halaman Detail yang sesuai
+  };
+
   return (
     <View style={styles.container}>
-       
       <TouchableOpacity style={styles.button} onPress={onPress}>
         <Image
-          source={require('../assets/Durian.png')} // Ganti dengan path gambar yang sesuai
+          source={require('../assets/Durian.png')}
           style={styles.buttonImage}
         />
         <Text style={styles.buttonText}>Check-in</Text>
       </TouchableOpacity>
-      
     </View>
   );
 };
@@ -26,7 +32,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#379237',
-    paddingHorizontal: 65, // Ubah nilai paddingHorizontal sesuai kebutuhan
+    paddingHorizontal: 65,
     paddingVertical: 2,
     borderRadius: 70,
     shadowColor: 'rgba(0, 0, 0, 0.9)',
@@ -34,19 +40,17 @@ const styles = StyleSheet.create({
     shadowOpacity: 1,
     shadowRadius: 4,
     elevation: 5,
-    marginTop:-12,
+    marginTop: -12,
   },
   buttonImage: {
-    width: 80, // Ubah lebar gambar sesuai kebutuhan
-    height: 50, // Ubah tinggi gambar sesuai kebutuhan
-    
+    width: 80,
+    height: 50,
   },
   buttonText: {
-    
     color: 'white',
     fontSize: 15,
     fontWeight: 'bold',
   },
 });
 
-export default Chekin;
+export default Checkin;

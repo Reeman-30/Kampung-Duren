@@ -1,9 +1,17 @@
 import React from 'react';
-import { View, StyleSheet, Image, ImageBackground, Text } from 'react-native';
-import Chekin  from '../component/Chekin';
-import Infohomestay  from '../component/Infohomestay';
+import { View, StyleSheet, Image, ImageBackground, Text, TouchableOpacity } from 'react-native';
+import Chekin from '../component/Chekin';
+import Detail from '../scrn/Detail';
+import Infohomestay from '../component/Infohomestay';
+import { useNavigation } from '@react-navigation/native';
 
 const Home = () => {
+  const navigation = useNavigation();
+
+  const handlePress = () => {
+    navigation.navigate('Detail');
+  };
+
   return (
     <View style={styles.container}>
       <View style={[styles.flexItem, { flex: 5 }]}>
@@ -27,14 +35,13 @@ const Home = () => {
           <Text style={styles.overlayText}>Selamat datang User</Text>
         </ImageBackground>
       </View>
-      <View style={[styles.flexItem, { flex: 7}]}>
+      <View style={[styles.flexItem, { flex: 7 }]}>
         {/* Konten Flex 2 */}
-        <Chekin/>
+        <Chekin />
       </View>
       <View style={[styles.flexItem, { flex: 10 }]}>
         {/* Konten Flex 3 */}
         <Infohomestay/>
-
       </View>
     </View>
   );
@@ -71,6 +78,10 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 15,
     fontWeight: 'bold',
+  },
+  image: {
+    width: 200,
+    height: 200,
   },
 });
 
