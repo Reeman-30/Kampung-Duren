@@ -1,16 +1,34 @@
-import React from 'react';
-import { View, StyleSheet, Image, ImageBackground, Text } from 'react-native';
-import { usenavigation } from '@react-navigation/native';
+import React, { useState } from 'react';
+import { View, StyleSheet, Image, ImageBackground, Text, FlatList } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
+const Home = ({ navigation }) => {
+  const [imageList, setImageList] = useState([
+    { id: 1, source: require('../assets/motel.jpeg') },
+    { id: 2, source: require('../assets/ankakontol.jpg') },
+    { id: 3, source: require('../assets/Rename.png') },
+    { id: 4, source: require('../assets/Food.jpeg') },
+    // Tambahkan gambar-gambar lainnya sesuai kebutuhan
+  ]);
 
-const Home = ({navigation}) => {
+  const renderImageItem = ({ item }) => (
+    <ImageBackground
+      source={item.source}
+      style={{ width: 360, height: 200 }}
+    />
+  );
+
   return (
     <View style={styles.container}>
       <View style={[styles.flexItem, { flex: 5 }]}>
         {/* Konten Flex 1 */}
-        <ImageBackground
-          source={require('../assets/motel.jpeg')}
-          style={{ width: 360, height: 200 }}
+        <FlatList
+          data={imageList}
+          renderItem={renderImageItem}
+          keyExtractor={(item) => item.id.toString()}
+          horizontal
+          pagingEnabled
+          showsHorizontalScrollIndicator={false}
         />
       </View>
 
@@ -18,13 +36,15 @@ const Home = ({navigation}) => {
         {/* Konten Flex 2 */}
         <View style={styles.textContainer}>
           <Text style={[styles.text1, { fontWeight: 'bold' }]}>Kampung Durian Homestay</Text>
-          <Text style={[styles.text2, {  }]}>Gg. Narsipah No.53, RT.04/RW.07, Rancamaya, Kec. Bogor Sel., Kota Bogor, Jawa Barat 16139</Text>
+          <Text style={[styles.text2, {}]}>
+            Gg. Narsipah No.53, RT.04/RW.07, Rancamaya, Kec. Bogor Sel., Kota Bogor, Jawa Barat 16139
+          </Text>
         </View>
       </View>
 
       <View style={[styles.flexItem, { flex: 5 }]}>
         {/* Konten Flex 3 */}
-       
+        {/* Tambahkan konten sesuai kebutuhan */}
       </View>
     </View>
   );
@@ -55,17 +75,16 @@ const styles = StyleSheet.create({
   text1: {
     fontSize: 20,
     color: 'black',
-    marginTop:26,
-    marginLeft:14,
+    marginTop: 26,
+    marginLeft: 14,
   },
   text2: {
     fontSize: 12,
     color: 'black',
-    marginTop:4,
-    marginLeft:14,
-    marginRight:25,
-  }
-
+    marginTop: 4,
+    marginLeft: 14,
+    marginRight: 25,
+  },
 });
 
 export default Home;

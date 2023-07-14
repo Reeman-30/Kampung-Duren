@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 4,
     elevation: 5,
-    marginTop:10
+    marginTop:60
   },
   imageContainer: {
     flexDirection: 'row',

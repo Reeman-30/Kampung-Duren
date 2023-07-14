@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
     marginTop: -12,
+    marginBottom:20,
   },
   buttonImage: {
     width: 80,

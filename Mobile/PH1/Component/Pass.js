@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, StyleSheet, TouchableOpacity } from "react-native";
 import Nav from "./Nav";
-import Detail from "../scrn/Detail";
+// import Detail from "../scrn/Detail";
 import Home from "../scrn/Home";
 
 const LogIn = () => {

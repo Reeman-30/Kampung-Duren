@@ -14,11 +14,11 @@ const Infohomestay = () => {
     <View style={styles.container}>
       <View style={styles.rowContainer}>
         <Image
-          source={require('../assets/vekalender.png')} 
+          source={require('../assets/tent_518823.png')} 
           resizeMode="contain" // Menggunakan resizeMode untuk menghindari pemotongan gambar
           style={styles.smallImage} 
         />
-        <Text style={styles.text}>Informasi</Text>
+        <Text style={styles.text}>Information</Text>
       </View>
       <TouchableOpacity onPress={handlePress}>
         <Image

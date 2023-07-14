@@ -10,6 +10,7 @@ import HomeScreen from './Scrn/HomeScreen';
 import History from './Scrn/History';
 import Detail from './Scrn/Detail';
 import Kotak from './Component/Kotak';
+import Profile from './Scrn/Profile';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -25,14 +26,18 @@ function HomeTabs() {
             iconName = 'home-outline';
           } else if (route.name === 'History') {
             iconName = 'time-outline';
+          } else if (route.name === 'Profile') {
+            iconName = 'person-outline';
           }
 
           return <Ionicons name={iconName} size={size} color={color} />;
         },
       })}
     >
-      <Tab.Screen name="Home" component={HomeScreen}options={{ headerShown: false }} />
-      <Tab.Screen name="History" component={History}options={{ headerShown: false }} />
+      
+      <Tab.Screen name="History" component={History} options={{ headerShown: false }} />
+      <Tab.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
+      <Tab.Screen name="Profile" component={Profile} options={{ headerShown: false }} />
     </Tab.Navigator>
   );
 }
@@ -57,8 +62,8 @@ function App() {
         />
         <Stack.Screen
           name="Kotak"
-          component={Kotak} 
-          />
+          component={Kotak}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

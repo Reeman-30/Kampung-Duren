@@ -1,29 +1,25 @@
 import React from 'react';
 import { View, StyleSheet, Image, Text } from 'react-native';
-import Detail from '../scrn/Detail'
+
 const Box = () => {
   return (
     <View style={styles.box}>
-       
       <Text style={styles.text}>
         KAMPUNG DURIAN RANCAMAYA
-</Text>
-<Text style={styles .pp}>
-Selamat datang di 
-Kampung Durian
-</Text>
-
-<Text style={styles .pw}>
-s
-</Text>
-      
+      </Text>
+      <Text style={styles.pp}>
+        Selamat datang di
+      </Text>
+      <Text style={styles.pp}>
+        Kampung Durian
+      </Text>
+      <Text style={styles.pw}>s</Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   box: {
-  
     backgroundColor: '#258225',
     borderRadius: 40,
     justifyContent: 'center',
@@ -32,25 +28,23 @@ const styles = StyleSheet.create({
   image: {
     width: 200,
     height: 150,
-    marginTop:-150,
-  
-    
+    marginTop: -150,
   },
   text: {
     fontSize: 30,
     marginLeft: -30,
-    color : 'white'
+    marginTop: 20, // Ubah nilai marginTop sesuai kebutuhan
+    color: 'white',
   },
-
   pp: {
     fontSize: 15,
     marginLeft: -30,
-    color : 'white'
+    color: 'white',
   },
   pw: {
     fontSize: 15,
     marginLeft: 20,
-    color : '#258225'
+    color: '#258225',
   },
 });
 
