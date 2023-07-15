@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, Image, ImageBackground, Text, FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import Fasilitas from '../Component/Fasilitas';
+import Fas2 from '../Component/Fas2';
 
 const Home = ({ navigation }) => {
   const [imageList, setImageList] = useState([
@@ -20,7 +22,7 @@ const Home = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <View style={[styles.flexItem, { flex: 5 }]}>
+      <View style={[styles.flexItem, {  }]}>
         {/* Konten Flex 1 */}
         <FlatList
           data={imageList}
@@ -32,7 +34,7 @@ const Home = ({ navigation }) => {
         />
       </View>
 
-      <View style={[styles.flexItem, { flex: 9 }]}>
+      <View style={[styles.flexItem, {  }]}>
         {/* Konten Flex 2 */}
         <View style={styles.textContainer}>
           <Text style={[styles.text1, { fontWeight: 'bold' }]}>Kampung Durian Homestay</Text>
@@ -42,9 +44,16 @@ const Home = ({ navigation }) => {
         </View>
       </View>
 
-      <View style={[styles.flexItem, { flex: 5 }]}>
+      <View style={[styles.flexItem, { flex: 10,marginTop:100}]}>
         {/* Konten Flex 3 */}
         {/* Tambahkan konten sesuai kebutuhan */}
+        <Fasilitas />
+      </View>
+      
+      <View style={[styles.flexItem, { flex: 10, marginBottom: 3 }]}>
+        {/* Konten Flex 4 */}
+        {/* Tambahkan konten sesuai kebutuhan */}
+        <Fas2 />
       </View>
     </View>
   );
@@ -75,7 +84,7 @@ const styles = StyleSheet.create({
   text1: {
     fontSize: 20,
     color: 'black',
-    marginTop: 26,
+    marginTop: 16,
     marginLeft: 14,
   },
   text2: {

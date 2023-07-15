@@ -1,32 +1,68 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Image, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import Detail from '../Scrn/Detail'
+import { PinchGestureHandler, State } from 'react-native-gesture-handler';
+
 const History = () => {
+  const [showInvoiceImage, setShowInvoiceImage] = useState(false);
+  const [scale, setScale] = useState(1);
+
   const handleInvoicePress = () => {
-    // Tambahkan logika yang ingin Anda lakukan saat tombol "Invoice" ditekan di sini
-    console.log('Tombol "Invoice" ditekan');
+    setShowInvoiceImage(!showInvoiceImage);
+  };
+
+  const handleContainerPress = () => {
+    setShowInvoiceImage(false);
+  };
+
+  const onPinchGestureEvent = event => {
+    setScale(event.nativeEvent.scale);
+  };
+
+  const onPinchHandlerStateChange = event => {
+    if (event.nativeEvent.oldState === State.ACTIVE) {
+      let newScale = scale * event.nativeEvent.scale;
+      newScale = Math.max(1, newScale);
+      newScale = Math.min(newScale, 3);
+      setScale(newScale);
+    }
   };
 
   return (
     <View style={styles.container}>
-      <View style={styles.box}>
-        <View style={styles.imageContainer}>
-          <Image
-            source={require('../assets/Durian.png')}
-            style={styles.image}
-          />
-          <Text style={styles.text}>Kampung Durian Homestay</Text>
+      <TouchableOpacity activeOpacity={1} onPress={handleContainerPress}>
+        <View style={styles.box}>
+          <View style={styles.imageContainer}>
+            <Image
+              source={require('../assets/Durian.png')}
+              style={styles.image}
+            />
+            <Text style={styles.text}>Kampung Durian Homestay</Text>
+          </View>
+          <View style={styles.orderContainer}>
+            <Text style={styles.orderText}>Order ID: 213213213</Text>
+            <View style={styles.horizontalLine} />
+          </View>
+          <Text style={styles.descriptionText}>Kampung Durian Homestay</Text>
+          <Text style={styles.dateText}>17/06/2003 (1 Malam)</Text>
+          <TouchableOpacity onPress={handleInvoicePress} style={styles.invoiceButton}>
+            <Text style={styles.invoiceButtonText}>Invoice</Text>
+          </TouchableOpacity>
+          {showInvoiceImage && (
+            <View style={styles.invoiceOverlay}>
+              <PinchGestureHandler
+                onGestureEvent={onPinchGestureEvent}
+                onHandlerStateChange={onPinchHandlerStateChange}
+              >
+                <Image
+                  source={require('../assets/invoice4.jpg')}
+                  style={[styles.invoiceImage, { transform: [{ scale }] }]}
+                  resizeMode="contain"
+                />
+              </PinchGestureHandler>
+            </View>
+          )}
         </View>
-        <View style={styles.orderContainer}>
-          <Text style={styles.orderText}>Order ID: 213213213</Text>
-          <View style={styles.horizontalLine} />
-        </View>
-        <Text style={styles.descriptionText}>Kampung Durian Homestay</Text>
-        <Text style={styles.dateText}>17/06/2003 (1 Malam)</Text>
-        <TouchableOpacity onPress={handleInvoicePress} style={styles.invoiceButton}>
-          <Text style={styles.invoiceButtonText}>Invoice</Text>
-        </TouchableOpacity>
-      </View>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -37,7 +73,7 @@ const styles = StyleSheet.create({
   },
   box: {
     width: 300,
-    height: 230, // Diperbarui agar menampung tombol "Invoice"
+    height: 250, // Diperbarui agar menampung gambar invoice
     backgroundColor: '#ffffff',
     borderRadius: 10,
     padding: 10,
@@ -46,7 +82,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 4,
     elevation: 5,
-    marginTop:60
+    marginTop: 60,
   },
   imageContainer: {
     flexDirection: 'row',
@@ -106,7 +142,21 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
   },
+  invoiceOverlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Warna gelap dengan opasitas 0.5
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  invoiceImage: {
+    width: 300,
+    height: 400,
+    marginTop: 10,
+  },
 });
 
 export default History;
-``

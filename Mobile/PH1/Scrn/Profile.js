@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, TouchableOpacity, Text, Dimensions } from 'react-native';
 import { Camera } from 'expo-camera';
+import { Ionicons } from '@expo/vector-icons'; // Import komponen ikon dari expo/vector-icons
 import * as ImagePicker from 'expo-image-picker';
 import HeadProf from '../Component/HeadProf';
 
@@ -24,6 +25,14 @@ class Profile extends Component {
     }
   };
 
+  navigateToSecurity = () => {
+    this.props.navigation.navigate('Security'); 
+    
+  };
+  navigateToHelp = () => {
+    this.props.navigation.navigate('Help'); // Navigasi ke halaman Help
+  };
+
   render() {
     return (
       <View style={styles.container}>
@@ -34,23 +43,29 @@ class Profile extends Component {
           <View style={styles.buttonContainer}>
             <Text style={styles.identityText}>Identity</Text>
             <TouchableOpacity style={styles.button} onPress={this.openCamera}>
-              <Text style={styles.buttonText}>ID Verification</Text>
+              <View style={styles.buttonContent}>
+                <Ionicons name="card" size={24} color="black" style={styles.buttonIcon} />
+                <Text style={styles.buttonText}>ID Verification</Text>
+              </View>
             </TouchableOpacity>
             <Text style={styles.settingText}>Setting</Text>
-            <TouchableOpacity style={styles.button}>
-              <Text style={styles.buttonText}>Tombol 2</Text>
+            <TouchableOpacity style={styles.button} onPress={this.navigateToSecurity}>
+              <View style={styles.buttonContent}>
+                <Ionicons name="lock-closed-outline" size={24} color="black" style={styles.buttonIcon} />
+                <Text style={styles.buttonText}>Security</Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.button} onPress={this.navigateToHelp}>
+              <View style={styles.buttonContent}>
+                <Ionicons name="help-circle-outline" size={24} color="black" style={styles.buttonIcon} />
+                <Text style={styles.buttonText}>Help Center</Text>
+              </View>
             </TouchableOpacity>
             <TouchableOpacity style={styles.button}>
-              <Text style={styles.buttonText}>Tombol 3</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.button}>
-              <Text style={styles.buttonText}>Tombol 4</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.button}>
-              <Text style={styles.buttonText}>Tombol 5</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.button}>
-              <Text style={styles.buttonText}>Tombol 6</Text>
+              <View style={styles.buttonContent}>
+                <Ionicons name="shield-outline" size={24} color="black" style={styles.buttonIcon} />
+                <Text style={styles.buttonText}>Privacy</Text>
+              </View>
             </TouchableOpacity>
           </View>
         </View>
@@ -89,8 +104,16 @@ const styles = StyleSheet.create({
     height: 50,
     backgroundColor: '#ffff',
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'flex-start', // Mengatur teks berada di sebelah kiri
+    paddingLeft: 10, // Memberi jarak antara ikon dan teks
     marginBottom: 2,
+  },
+  buttonContent: {
+    flexDirection: 'row', // Menyusun ikon dan teks dalam satu baris
+    alignItems: 'center', // Mengatur ikon dan teks berada di tengah secara vertikal
+  },
+  buttonIcon: {
+    marginRight: 5, // Mengurangi jarak antara ikon dan teks
   },
   buttonText: {
     fontSize: 16,

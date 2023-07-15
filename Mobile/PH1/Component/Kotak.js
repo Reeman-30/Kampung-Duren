@@ -1,9 +1,30 @@
 import React from 'react';
 import { View, Image, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import Detail from '../Scrn/Detail'
+import * as ImagePicker from 'expo-image-picker';
+import * as Camera from 'expo-camera';
+
 const Kotak = () => {
+  const openCamera = async () => {
+    const { status } = await Camera.requestCameraPermissionsAsync();
+    if (status === 'granted') {
+      const image = await ImagePicker.launchCameraAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        quality: 1,
+        allowsEditing: false,
+        aspect: [4, 3],
+      });
+
+      if (!image.cancelled) {
+        console.log('Image URI:', image.uri);
+        // Lakukan operasi dengan gambar sesuai kebutuhan Anda
+      }
+    } else {
+      console.log('Camera permission denied');
+    }
+  };
+
   const handleInvoicePress = () => {
-    // Tambahkan logika yang ingin Anda lakukan saat tombol "Invoice" ditekan di sini
+    openCamera();
     console.log('Tombol "Invoice" ditekan');
   };
 
@@ -23,11 +44,11 @@ const Kotak = () => {
         </View>
         <Text style={styles.dateText}>17/06/2003 (1 Malam)</Text>
         <Image
-            source={require('../assets/QR.png')}
-            style={styles.imageQR}
-          />
+          source={require('../assets/QR.png')}
+          style={styles.imageQR}
+        />
         <TouchableOpacity onPress={handleInvoicePress} style={styles.invoiceButton}>
-          <Text style={styles.invoiceButtonText}>Invoice</Text>
+          <Text style={styles.invoiceButtonText}>Scan</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -49,7 +70,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 4,
     elevation: 5,
-    marginTop:10
+    marginTop: 10,
   },
   imageContainer: {
     flexDirection: 'row',
@@ -64,8 +85,7 @@ const styles = StyleSheet.create({
   imageQR: {
     width: 200,
     height: 200,
-    marginLeft: 40
-
+    marginLeft: 40,
   },
   text: {
     fontSize: 16,
@@ -118,4 +138,3 @@ const styles = StyleSheet.create({
 });
 
 export default Kotak;
-``

@@ -11,6 +11,10 @@ import History from './Scrn/History';
 import Detail from './Scrn/Detail';
 import Kotak from './Component/Kotak';
 import Profile from './Scrn/Profile';
+import Security from './Scrn/Security';
+import ChangePass from './Scrn/ChangePass';
+import Help from './Scrn/Help';
+
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -34,9 +38,8 @@ function HomeTabs() {
         },
       })}
     >
-      
-      <Tab.Screen name="History" component={History} options={{ headerShown: false }} />
       <Tab.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
+      <Tab.Screen name="History" component={History} options={{ headerShown: false }} />
       <Tab.Screen name="Profile" component={Profile} options={{ headerShown: false }} />
     </Tab.Navigator>
   );
@@ -63,6 +66,23 @@ function App() {
         <Stack.Screen
           name="Kotak"
           component={Kotak}
+        />
+        <Stack.Screen
+          name="Security"
+          component={Security}
+        />
+        <Stack.Screen
+          name="ChangePass"
+          component={ChangePass}
+        />
+        <Stack.Screen
+          name="LoginScreen"
+          component={LoginScreen}
+          options={{ headerShown: false }}
+        />
+         <Stack.Screen
+          name="Help"
+          component={Help}
         />
       </Stack.Navigator>
     </NavigationContainer>

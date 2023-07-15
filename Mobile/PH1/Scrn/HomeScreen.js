@@ -24,7 +24,7 @@ const Home = () => {
             style={styles.overlayImage1}
             resizeMode="contain"
           />
-          <Text style={styles.overlayText}>Selamat datang User</Text>
+          <Text style={styles.overlayText}>Selamat datang Firza</Text>
         </ImageBackground>
       </View>
       <View style={[styles.flexItem, { flex: 8, marginBottom: 40,marginTop:50 }]}>
