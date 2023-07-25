@@ -1,0 +1,8 @@
+.bg-image {
+    background-image: url('../../images/kp-duren-new.jpg');
+    background-size: cover;
+    height: 512px;
+    width: auto;
+    background-color: rgb(87, 87, 87);
+    background-blend-mode: multiply;
+}
